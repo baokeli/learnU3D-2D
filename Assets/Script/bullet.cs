@@ -13,6 +13,11 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = transform.position + new Vector3(0,0.1f,0);
+        Vector3 v3 = Camera.main.WorldToScreenPoint(transform.position);
+        if(v3.y > Screen.height)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
