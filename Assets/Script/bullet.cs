@@ -20,4 +20,9 @@ public class bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        //Debug.Log("Åö×²" + coll.gameObject.name);
+    }
 }

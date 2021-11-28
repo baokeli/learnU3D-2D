@@ -16,7 +16,7 @@ public class plane : MonoBehaviour
     void Update()
     {
         Vector3 mouseV3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y,1);
-        transform.position = Camera.main.ScreenToWorldPoint(mouseV3);
+        transform.position = Camera.main.ScreenToWorldPoint(CheckV3InScreen(mouseV3));
 
         dtTime += Time.deltaTime;
         if(dtTime > 0.1)
@@ -25,5 +25,22 @@ public class plane : MonoBehaviour
             bullet.transform.position = transform.position + new Vector3(0, 1, 0);
             dtTime = 0;
         }
+    }
+
+    Vector3 CheckV3InScreen(Vector3 v3)
+    {
+        Vector3 retV3 = new Vector3(v3.x,v3.y,v3.z);
+
+        if (retV3.x > Screen.width)
+            retV3.x = Screen.width;
+        else if (retV3.x < 0)
+            retV3.x = 0;
+
+        if (retV3.y > Screen.height)
+            retV3.y = Screen.height;
+        else if (retV3.y < 0)
+            retV3.y = 0;
+
+        return retV3;
     }
 }
